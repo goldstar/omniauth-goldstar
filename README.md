@@ -1,2 +1,36 @@
-# omniauth-goldstar
-Omniauth strategy for authenticating against Goldstar's oauth
+# OmniAuth Goldstar
+
+This gem contains the Goldstar strategy for OmniAuth.
+
+## Before You Begin
+
+Get an ID and Secret for your app.
+
+## Using This Strategy
+
+First start by adding this gem to your Gemfile:
+
+```ruby
+gem 'omniauth-goldstar', :github => 'goldstar/omniauth-goldstar'
+```
+
+Next, tell OmniAuth about goldstar. For a Rails app, your `config/initializers/omniauth.rb` file should look like this:
+
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :goldstar, "APP_KEY", "APP_SECRET", "APP_HOST"
+end
+```
+
+Replace `"APP_KEY"`, `"APP_SECRET"`, and  `"APP_HOST"` with the appropriate values.
+
+
+## License
+
+Copyright (c) 2015 by Goldstar Events, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
