@@ -4,7 +4,15 @@ This gem contains the Goldstar strategy for OmniAuth.
 
 ## Before You Begin
 
-Get an ID and Secret for your app.
+Get an ID and Secret for your app.  Goldstar OAuth credentials can only be created by console.
+
+Create a client:
+
+```ruby
+Oauth2Client.create!(name: 'Smile', redirect_uri: 'https://yourapp.com/auth/goldstar/callback', application_logo: 'https://yourapp.com/images/logo.gif')
+```
+
+Note the new client's client_key and client_secret.  These are the app_id and app_secret that you'll need below. The uri root (e.g. https://yourapp.com) is the app_host.
 
 ## Using This Strategy
 
@@ -17,13 +25,23 @@ gem 'omniauth-goldstar', :github => 'goldstar/omniauth-goldstar'
 Next, tell OmniAuth about goldstar. For a Rails app, your `config/initializers/omniauth.rb` file should look like this:
 
 ```ruby
+require 'omniauth-goldstar'
+
+goldstar_config = if ENV['GOLDSTAR_APP_ID']
+  {
+    'app_id'     => ENV['GOLDSTAR_APP_ID'],
+    'app_secret' => ENV['GOLDSTAR_APP_SECRET'],
+    'app_host'   => ENV['GOLDSTAR_APP_HOST']
+  }
+else
+  YAML.load_file(File.join(Rails.root, "config", "goldstar-oauth2.yml"))[Rails.env]
+end
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :goldstar, "APP_KEY", "APP_SECRET", "APP_HOST"
+  provider :goldstar, goldstar_config['app_id'], goldstar_config['app_secret'], goldstar_config['app_host']
+  provider :development if Rails.env.development? # If you just want an unsafe login for development
 end
 ```
-
-Replace `"APP_KEY"`, `"APP_SECRET"`, and  `"APP_HOST"` with the appropriate values.
-
 
 ## License
 
