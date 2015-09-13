@@ -39,7 +39,8 @@ end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :goldstar, goldstar_config['app_id'], goldstar_config['app_secret'], goldstar_config['app_host']
-  provider :development if Rails.env.development? # If you just want an unsafe login for development
+  # If you just want an unsafe login for development
+  provider :developer, :fields => [:goldstar_user_id], :uid_field => :goldstar_user_id if Rails.env.development?
 end
 ```
 
