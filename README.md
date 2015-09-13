@@ -12,7 +12,7 @@ Create a client:
 Oauth2Client.create!(name: 'Smile', redirect_uri: 'https://yourapp.com/auth/goldstar/callback', application_logo: 'https://yourapp.com/images/logo.gif')
 ```
 
-Note the new client's client_key and client_secret.  These are the app_id and app_secret that you'll need below. The uri root (e.g. https://yourapp.com) is the app_host.
+Note the new client's client_key and client_secret.  These are the app_id and app_secret that you'll need below. The app_host is the root domain of the server you created the client on (e.g. https://wwww.goldstar.com for production or http://0.0.0.0:3000 for development)
 
 ## Using This Strategy
 
