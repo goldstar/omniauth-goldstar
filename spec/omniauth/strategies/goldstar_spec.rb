@@ -41,11 +41,11 @@ describe OmniAuth::Strategies::Goldstar do
     end
 
     it 'should returns the email' do
-      expect(subject.info[:email]).to eq(raw_info_hash['email_address'])
+      expect(subject.info[:email]).to eq(raw_info_hash['email'])
     end
 
     it 'should returns the avatar url' do
-      expect(subject.info[:avatar_url]).to eq(raw_info_hash['avatar_url'])
+      expect(subject.info[:avatar_url]).to eq(raw_info_hash['profile_photo_url'])
     end
 
     it 'should returns the privileges' do
@@ -59,8 +59,8 @@ private
 def raw_info_hash
   {
     'name' => 'Foo Bar',
-    'email_address' => 'foo@example.com',
-    'avatar_url' => 'http://example.com/avatar.jpg',
+    'email' => 'foo@example.com',
+    'profile_photo_url' => 'http://example.com/avatar.jpg',
     'privileges' => 'developer'
   }
 end
