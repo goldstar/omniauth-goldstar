@@ -19,7 +19,7 @@ Note the new client's client_key and client_secret.  These are the app_id and ap
 First start by adding this gem to your Gemfile:
 
 ```ruby
-gem 'omniauth-goldstar', :github => 'goldstar/omniauth-goldstar'
+gem 'omniauth-goldstar', '= 1.0.0'
 ```
 
 Next, tell OmniAuth about goldstar. For a Rails app, your `config/initializers/omniauth.rb` file should look like this:
